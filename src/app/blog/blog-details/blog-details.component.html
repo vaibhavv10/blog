@@ -1,0 +1,22 @@
+<div class="example-container mat-elevation-z8">
+  <div class="example-loading-shade"
+        *ngIf="isLoadingResults">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+  </div>
+  <div class="button-row">
+    <a mat-flat-button color="primary" [routerLink]="['/blog']"><mat-icon>list</mat-icon></a>
+  </div>
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title><h2>{{blog.blogTitle}}</h2></mat-card-title>
+      <p>{{blog.created | date}}, updated: {{blog.updated | date}}</p>
+      <mat-card-subtitle>{{blog.blogDesc}}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="{{blog.blogImgUrl}}" alt="{{blog.blogTitle}}">
+
+    <mat-card-actions>
+      <a mat-flat-button color="primary" [routerLink]="['/blog/edit', blog.id]"><mat-icon>edit</mat-icon></a>
+      <a mat-flat-button color="warn" (click)="deleteBlog(blog.id)"><mat-icon>delete</mat-icon></a>
+    </mat-card-actions>
+  </mat-card>
+</div>

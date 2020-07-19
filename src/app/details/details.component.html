@@ -1,0 +1,15 @@
+<div class="example-container mat-elevation-z8">
+  <div class="example-loading-shade"
+       *ngIf="isLoadingResults">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+  </div>
+  <mat-card class="example-card" [routerLink]="['/details/', blog.id]">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{blog.blogTitle}}</mat-card-title>
+      <p>{{blog.updated | date: 'dd MMM yyyy'}}</p>
+      <mat-card-subtitle>{{blog.blogDesc}}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="{{blog.blogImgUrl}}" alt="{{blog.blogTitle}}">
+  </mat-card>
+</div>

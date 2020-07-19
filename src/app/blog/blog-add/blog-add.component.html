@@ -1,0 +1,41 @@
+<div class="example-container mat-elevation-z8">
+  <div class="example-loading-shade"
+        *ngIf="isLoadingResults">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+  </div>
+  <div class="button-row">
+    <a mat-flat-button color="primary" [routerLink]="['/blog']"><mat-icon>list</mat-icon></a>
+  </div>
+  <mat-card class="example-card">
+    <form [formGroup]="blogForm" (ngSubmit)="onFormSubmit()">
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Blog Title" formControlName="blogTitle"
+                [errorStateMatcher]="matcher">
+        <mat-error>
+          <span *ngIf="!blogForm.get('blogTitle').valid && blogForm.get('blogTitle').touched">Please enter Blog Title</span>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <textarea matInput placeholder="Blog Desc" formControlName="blogDesc"
+                [errorStateMatcher]="matcher"></textarea>
+        <mat-error>
+          <span *ngIf="!blogForm.get('blogDesc').valid && blogForm.get('blogDesc').touched">Please enter Blog Description</span>
+        </mat-error>
+      </mat-form-field>
+
+      <div class="button-row">
+
+      <mat-form-field class="example-full-width">
+          <input matInput placeholder="Blog Image URL" formControlName="blogImgUrl"
+                  [errorStateMatcher]="matcher">
+          <mat-error>
+            <span *ngIf="!blogForm.get('blogImgUrl').valid && blogForm.get('blogImgUrl').touched">Please enter Blog Image URL</span>
+          </mat-error>
+        </mat-form-field>
+        <button type="submit" [disabled]="!blogForm.valid" mat-flat-button color="primary"><mat-icon>save</mat-icon></button>
+      </div>
+    </form>
+  </mat-card>
+</div>
